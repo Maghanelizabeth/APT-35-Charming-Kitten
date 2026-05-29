@@ -1,0 +1,44 @@
+Overview
+APT35 is an Iranian state-aligned threat group focused on espionage through phishing and credential theft.
+
+Primary Objectives
+- Intelligence collection
+- Long-term email account access
+- Targeted phishing campaigns
+
+Target Sectors
+- Government
+- Academia
+- Defense contractors
+- Journalists
+- Human rights organizations
+
+Key Characteristics
+- Heavy reliance on phishing emails
+- Fake login pages (credential harvesting)
+- MFA fatigue / token abuse attempts
+- Cloud-first intrusion strategy
+
+APT35 Behavior Model
+
+1. Phishing Entry Point
+- Credential harvesting via fake login portals
+- Email spoofing and impersonation campaigns
+
+2. Credential Replay
+- Reuse of stolen passwords
+- Password spraying against cloud services
+
+3. Cloud Account Abuse
+- Gmail / O365 mailbox access
+- Forwarding rules creation
+- OAuth token abuse
+
+4. Identity Anomalies
+- Impossible travel logins
+- New device login patterns
+- MFA bypass attempts
+
+Detection Principle
+
+"If the identity is compromised, endpoint telemetry may remain clean."
