@@ -1,0 +1,11 @@
+APT35 credential reuse across changing IPs.
+
+IdentityLogonEvents
+| where ActionType == "LogonSuccess"
+| sort by AccountUpn, Timestamp asc
+| extend PrevTime = prev(Timestamp),
+         PrevIP = prev(IPAddress)
+| extend TimeDiff = datetime_diff("minute", Timestamp, PrevTime)
+| where TimeDiff between (1 .. 180)
+| where IPAddress != PrevIP
+| project AccountUpn, IPAddress, PrevIP, Timestamp
