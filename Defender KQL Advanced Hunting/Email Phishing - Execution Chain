@@ -1,0 +1,16 @@
+User interaction with phishing content followed by execution.
+
+EmailEvents
+| where ThreatTypes has "Phish"
+| project RecipientEmailAddress, NetworkMessageId, EmailTime=Timestamp
+| join kind=inner (
+    UrlClickEvents
+    | project NetworkMessageId, Url, ClickTime=Timestamp, AccountUpn
+) on NetworkMessageId
+| join kind=inner (
+    DeviceProcessEvents
+    | where FileName in~ ("powershell.exe", "cmd.exe", "wscript.exe", "mshta.exe")
+    | project DeviceName, AccountName, ExecTime=Timestamp, FileName, ProcessCommandLine
+) on $left.RecipientEmailAddress == $right.AccountName
+| where ExecTime between (ClickTime .. ClickTime + 1h)
+| project RecipientEmailAddress, Url, FileName, ProcessCommandLine, ClickTime, ExecTime
