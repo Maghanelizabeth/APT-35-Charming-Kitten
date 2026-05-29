@@ -1,5 +1,3 @@
-# APT-35---Charming-Kitten
-
 Charming Kitten (APT35) – Recent Activity Targeting Energy Sector & Critical Infrastructure
 
 Executive Summary
