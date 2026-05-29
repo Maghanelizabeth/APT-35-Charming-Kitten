@@ -1,0 +1,9 @@
+APT35 using stolen credentials for internal spread.
+
+DeviceLogonEvents
+| where ActionType == "LogonSuccess"
+| summarize Devices=dcount(DeviceName),
+            Logons=count()
+  by AccountName, IPAddress, bin(Timestamp, 1h)
+| where Devices > 3
+| order by Devices desc
