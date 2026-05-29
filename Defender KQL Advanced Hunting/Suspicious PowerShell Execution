@@ -1,0 +1,7 @@
+APT35 payload execution after phishing compromise.
+
+DeviceProcessEvents
+| where FileName =~ "powershell.exe"
+| where ProcessCommandLine has_any ("-enc", "IEX", "DownloadString", "Net.WebClient", "Invoke-Expression")
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine
+| order by Timestamp desc
