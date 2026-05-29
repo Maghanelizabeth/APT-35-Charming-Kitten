@@ -1,0 +1,7 @@
+APT35 persistence via cloud application abuse.
+
+CloudAppEvents
+| where ActionType in ("Add app role assignment", "Consent to application", "AddOAuth2PermissionGrant")
+| summarize Actions=count() by AccountDisplayName, Application, IPAddress, bin(Timestamp, 1d)
+| where Actions > 1
+| order by Actions desc
