@@ -1,0 +1,20 @@
+This repository contains behavioral detection content for identifying activity associated with APT35 (Charming Kitten), an Iranian state-aligned threat actor.
+
+Focus Areas
+
+- Credential phishing campaigns
+- Email account compromise (Gmail, Outlook, Yahoo)
+- Cloud service abuse (O365, VPN portals)
+- Identity-based intrusion techniques
+- Social engineering operations
+
+Detection Philosophy
+
+This project focuses on:
+- Identity compromise over endpoint malware
+- Authentication anomalies over network signatures
+- Cloud telemetry over endpoint-only detection
+
+Intended Use
+
+SOC analysts, threat hunters, and detection engineers focused on identity security and cloud intrusion detection.
